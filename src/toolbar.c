@@ -1,6 +1,7 @@
 #include <toolbar.h>
 
 #include <stdlib.h>
+#include <ctype.h>
 
 ToolBar *toolbar_new(int x, int y, int w, int h,
         FUNC_PTR init, FUNC_PTR event, FUNC_PTR draw, FUNC_PTR clean) {
@@ -23,7 +24,7 @@ void toolbar_clean(ToolBar *tb) {
 }
 
 void toolbar_event(ToolBar *tb, int key) {
-    tb->key = key;
+    tb->key = tolower(key);
     tb->event(tb);
 }
 

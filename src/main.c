@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         palette_init, palette_event, palette_draw, palette_clean);
     palette->instance = &art->sheet;
 
-    while (key != 'q') {
+    while (key != 'q' && key != 'Q') {
 
         clear();
 
@@ -105,11 +105,27 @@ int main(int argc, char *argv[]) {
             break;
 
         case 'w':
+        case 'W':
         case 'a':
+        case 'A':
         case 's':
+        case 'S':
         case 'd':
+        case 'D':
             toolbar_event(pen, key);
             break;
+
+        /* Center Sheet */
+        case 'c':
+        case 'C':
+            sheet_center(&art->sheet);
+            break;
+
+        /* Show / hide sheet bg */
+        case 'v':
+        case 'V':
+            if (art->sheet.bg) art->sheet.bg = 0;
+            else art->sheet.bg = 1;
     
         case KEY_UP:
         case KEY_DOWN:

@@ -27,6 +27,8 @@ $ ./bin/cursesart file
 * **w, a, s, d:** Move the character selector on the left toolbar.
 * **Up, down, left, right arrows:** move the color/attribute selector on the right  toolbar.
 * **I, J, K, L:** move the sheet.
+* **c:** center the sheet.
+* **v:** show / hide sheet background.
 * **F2:** save the file and generates C source.
 ---
 #### Command line

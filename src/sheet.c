@@ -26,9 +26,15 @@ void sheet_draw(Sheet *sheet) {
                 cell_draw(cell, i + sheet->x, j + sheet->y);
             else {
                 /* Draw background */
-                attron(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
-                mvaddch(j + sheet->y, i + sheet->x, /*ACS_CKBOARD*/ ' ');
-                attroff(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
+                if (sheet->bg) {
+                    attron(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
+                    mvaddch(j + sheet->y, i + sheet->x, /*ACS_CKBOARD*/ ' ');
+                    attroff(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
+                } else {
+                    if (index == sheet->cursor) {
+                        mvaddch(j + sheet->y, i + sheet->x, ' ');
+                    }
+                }
             }
 
             if (index == sheet->cursor) attroff(A_REVERSE);

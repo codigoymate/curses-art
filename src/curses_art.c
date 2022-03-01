@@ -12,6 +12,7 @@ CursesArt *curses_art_new(void) {
     art->sheet.current_ch_x = art->sheet.current_ch_y = 1;
     art->sheet.current_col_x = 1;
     art->sheet.current_col_y = 8;
+    art->sheet.bg = 1;
 
     return art;
 }
