@@ -52,10 +52,12 @@ void sheet_print_ch(Sheet *sheet) {
     sheet->data[sheet->cursor].ch = sheet->current_char;
     sheet->data[sheet->cursor].attr = sheet->current_attr;
     sheet->data[sheet->cursor].active = 1;
+    sheet->modified = 1;
 }
 
 void sheet_delete_ch(Sheet *sheet) {
     sheet->data[sheet->cursor].active = 0;
+    sheet->modified = 1;
 }
 
 void sheet_center(Sheet *sheet) {

@@ -25,6 +25,8 @@ void save_file(CursesArt *art) {
     }
 
     fclose(file);
+
+    art->sheet.modified = 0;
 }
 
 void load_file(CursesArt *art) {

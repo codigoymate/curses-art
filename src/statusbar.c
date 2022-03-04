@@ -20,6 +20,12 @@ void statusbar_draw(CursesArt *art) {
     printw(" Ch: %i%c", art->sheet.current_char, 
             art->sheet.current_attr & A_ALTCHARSET ? 'e' : ' ');
 
+    /* Modified */
+    if (art->sheet.modified) {
+        move(h - 1, w - 9);
+        printw("Modified");
+    }
+
     attroff(COLOR_PAIR(COLOR_STATUS) | A_BOLD);
         
 }
