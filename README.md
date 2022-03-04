@@ -24,6 +24,7 @@ $ ./bin/cursesart file
 #### Keys
 * **i, j, k, l:** move the cursor through the sheet.
 * **Space:** print the current character with the current attribute.
+* **Delete, x:** delete the current character at cursor position.
 * **w, a, s, d:** Move the character selector on the left toolbar.
 * **Up, down, left, right arrows:** move the color/attribute selector on the right  toolbar.
 * **I, J, K, L:** move the sheet.

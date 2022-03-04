@@ -22,6 +22,7 @@ void sheet_init(Sheet *sheet);
 void sheet_draw(Sheet *sheet);
 
 void sheet_print_ch(Sheet *sheet);
+void sheet_delete_ch(Sheet *sheet);
 
 void sheet_center(Sheet *sheet);
 

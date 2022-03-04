@@ -127,6 +127,8 @@ int main(int argc, char *argv[]) {
             if (art->sheet.bg) art->sheet.bg = 0;
             else art->sheet.bg = 1;
     
+
+        /* Move attr pallete cursor */
         case KEY_UP:
         case KEY_DOWN:
         case KEY_LEFT:
@@ -134,9 +136,17 @@ int main(int argc, char *argv[]) {
             toolbar_event(palette, key);
             break;
 
+        /* Save file */
         case KEY_F(2):
             save_file(art);
             generate_source(art);
+            break;
+
+        /* Delete character */
+        case 'x':
+        case 'X':
+        case KEY_DC:
+            sheet_delete_ch(&art->sheet);
             break;
         }
 

@@ -54,6 +54,10 @@ void sheet_print_ch(Sheet *sheet) {
     sheet->data[sheet->cursor].active = 1;
 }
 
+void sheet_delete_ch(Sheet *sheet) {
+    sheet->data[sheet->cursor].active = 0;
+}
+
 void sheet_center(Sheet *sheet) {
     int w, h;
     getmaxyx(stdscr, h, w);
