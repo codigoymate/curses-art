@@ -9,6 +9,7 @@
 #include <titlebar.h>
 #include <file_utils.h>
 #include <code_gen.h>
+#include <quit_prompt.h>
 
 int main(int argc, char *argv[]) {
 
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
         palette_init, palette_event, palette_draw, palette_clean);
     palette->instance = &art->sheet;
 
-    while (key != 'q' && key != 'Q') {
+    while (!art->quit) {
 
         clear();
 
@@ -57,10 +58,19 @@ int main(int argc, char *argv[]) {
         titlebar_draw(art);
         statusbar_draw(art);
 
+        if (art->quit_prompt) {
+            draw_quit_prompt();
+        }
+
         refresh();
 
         toolbar_draw(pen);
         toolbar_draw(palette);
+
+        if (art->quit_prompt) {
+            update_quit_prompt(art);
+            continue;
+        }
 
         key = getch();
 
@@ -147,6 +157,12 @@ int main(int argc, char *argv[]) {
         case 'X':
         case KEY_DC:
             sheet_delete_ch(&art->sheet);
+            break;
+
+         /* Quit */
+        case 'q':
+        case 'Q':
+            curses_art_quit(art);
             break;
         }
 

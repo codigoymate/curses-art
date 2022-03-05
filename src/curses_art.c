@@ -4,6 +4,8 @@
 CursesArt *curses_art_new(void) {
     CursesArt *art = (CursesArt *) malloc(sizeof(CursesArt));
     art->filename = NULL;
+    art->quit = 0;
+    art->quit_prompt = 0;
     art->sheet.width = 40;
     art->sheet.height = 9;
     art->sheet.data = NULL;
@@ -24,4 +26,12 @@ void curses_art_destroy(CursesArt *art) {
     if (art->sheet.data != NULL)
         free(art->sheet.data);
     free(art);
+}
+
+void curses_art_quit(CursesArt *art) {
+    if (art->sheet.modified) {
+        art->quit_prompt = 1;
+    } else {
+        art->quit = 1;
+    }
 }

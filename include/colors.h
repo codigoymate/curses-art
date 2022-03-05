@@ -6,6 +6,7 @@
 #define COLOR_COLOR_SEL     67
 #define COLOR_STATUS        68
 #define COLOR_TITLE         69
+#define COLOR_QUIT_PROMPT   70
 
 void init_pairs(void);
 

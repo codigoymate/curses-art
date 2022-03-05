@@ -8,4 +8,5 @@ void init_pairs(void) {
     init_pair(COLOR_COLOR_SEL, COLOR_BLACK, COLOR_GREEN);
     init_pair(COLOR_STATUS, COLOR_WHITE, COLOR_GREEN);
     init_pair(COLOR_TITLE, COLOR_WHITE, COLOR_GREEN);
+    init_pair(COLOR_QUIT_PROMPT, COLOR_WHITE, COLOR_RED);
 }
