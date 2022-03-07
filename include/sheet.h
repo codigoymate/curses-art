@@ -15,8 +15,7 @@ typedef struct {
     chtype current_char, current_attr;
     int current_ch_x, current_ch_y;
     int current_col_x, current_col_y;
-    int bg;
-    int modified;
+    int bg, modified, mouse_mode;
 } Sheet;
 
 void sheet_init(Sheet *sheet);

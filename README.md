@@ -11,6 +11,7 @@
 The only dep is ncurses 5.0 or higher.
 
 ---
+
 #### Compile and Run
 Compile:
 ```sh
@@ -20,6 +21,8 @@ Run:
 ```sh
 $ ./bin/cursesart file
 ```
+
+---
 
 #### Keys
 * **i, j, k, l:** move the cursor through the sheet.
@@ -31,7 +34,15 @@ $ ./bin/cursesart file
 * **c:** center the sheet.
 * **v:** show / hide sheet background.
 * **F2:** save the file and generates C source.
+
 ---
+
+#### Mouse
+* **Left click on the sheet:** print current character/attr at mouse position.
+* **Right click on the sheet:** delete the current character/attr at mouse position.
+
+---
+
 #### Command line
 ```sh
 $ cursesart FILE -w -h -H
@@ -40,6 +51,8 @@ $ cursesart FILE -w -h -H
 * **-w, --width:** width of the sheet.
 * **-h, --height:** height of the sheet.
 * **-H, --help:** Show quick cmd line help.
+
+---
 
 #### Saving the file
 Press F2 to save the file. curses-art generates a binary file to be reopened later. Also generates a source C language file to export to any ncurses project.

@@ -20,7 +20,7 @@ void sheet_draw(Sheet *sheet) {
             index = j * sheet->width + i;
             cell = &sheet->data[index];
 
-            if (index == sheet->cursor) attron(A_REVERSE);
+            if (index == sheet->cursor && !sheet->mouse_mode) attron(A_REVERSE);
 
             if (cell->active)
                 cell_draw(cell, i + sheet->x, j + sheet->y);
@@ -28,16 +28,16 @@ void sheet_draw(Sheet *sheet) {
                 /* Draw background */
                 if (sheet->bg) {
                     attron(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
-                    mvaddch(j + sheet->y, i + sheet->x, /*ACS_CKBOARD*/ ' ');
+                    mvaddch(j + sheet->y, i + sheet->x, ' ');
                     attroff(COLOR_PAIR(COLOR_SHEET_BG) | A_ALTCHARSET);
                 } else {
-                    if (index == sheet->cursor) {
+                    if (index == sheet->cursor && !sheet->mouse_mode) {
                         mvaddch(j + sheet->y, i + sheet->x, ' ');
                     }
                 }
             }
 
-            if (index == sheet->cursor) attroff(A_REVERSE);
+            if (index == sheet->cursor && !sheet->mouse_mode) attroff(A_REVERSE);
         }
     }
 }

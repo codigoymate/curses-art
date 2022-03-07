@@ -10,6 +10,7 @@
 #include <file_utils.h>
 #include <code_gen.h>
 #include <quit_prompt.h>
+#include <mouse.h>
 
 int main(int argc, char *argv[]) {
 
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
     noecho();
     curs_set(0);
     keypad(stdscr, TRUE);
+    mousemask(BUTTON1_CLICKED | BUTTON3_CLICKED, NULL);
 
     /* Center sheet */
     sheet_center(&art->sheet);
@@ -75,6 +77,8 @@ int main(int argc, char *argv[]) {
         key = getch();
 
         switch(key) {
+
+        /* Termina resize */
         case KEY_RESIZE:
             sheet_center(&art->sheet);
             getmaxyx(stdscr, h, w);
@@ -82,6 +86,13 @@ int main(int argc, char *argv[]) {
             mvwin(palette->wnd, w - 27, 3);
             wrefresh(palette->wnd);
             break;
+        
+        /* Mouse */
+        case KEY_MOUSE:
+            mouse_event(art);
+            break;
+
+        
         case 'i' & 0x1F: art->sheet.y --; break;
         case 'k' & 0x1F: art->sheet.y ++; break;
         case 'j' & 0x1F: art->sheet.x --; break;
@@ -90,28 +101,33 @@ int main(int argc, char *argv[]) {
         case 'i':
             art->sheet.cursor -= art->sheet.width;
             if (art->sheet.cursor < 0) art->sheet.cursor += art->sheet.width;
+            art->sheet.mouse_mode = 0;
             break;
 
         case 'k':
             art->sheet.cursor += art->sheet.width;
             if (art->sheet.cursor >= art->sheet.width * art->sheet.height)
                 art->sheet.cursor -= art->sheet.width;
+            art->sheet.mouse_mode = 0;
             break;
 
         case 'l':
             art->sheet.cursor ++;
             if (art->sheet.cursor >= art->sheet.width * art->sheet.height)
                 art->sheet.cursor = 0;
+            art->sheet.mouse_mode = 0;
             break;
 
         case 'j':
             art->sheet.cursor --;
             if (art->sheet.cursor < 0)
                 art->sheet.cursor = art->sheet.width * art->sheet.height - 1;
+            art->sheet.mouse_mode = 0;
             break;
 
         case ' ':
             sheet_print_ch(&art->sheet);
+            art->sheet.mouse_mode = 0;
             break;
 
         case 'w':

@@ -16,6 +16,7 @@ CursesArt *curses_art_new(void) {
     art->sheet.current_col_y = 8;
     art->sheet.bg = 1;
     art->sheet.modified = 0;
+    art->sheet.mouse_mode = 0;
 
     return art;
 }
