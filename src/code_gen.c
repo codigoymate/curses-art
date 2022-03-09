@@ -55,7 +55,7 @@ void generate_source(CursesArt *art) {
             ch |= sheet->data[i].ch & 0xFF;
             ch |= sheet->data[i].attr & ~0xFF;
         }
-        fprintf(file, "%i", ch);
+        fprintf(file, "0x%.4X", ch);
         if (i != sheet->width * sheet->height - 1)
             fprintf(file, ", ");
         col ++;
