@@ -7,6 +7,10 @@
 
 ---
 
+*03/09/2022: added resize mode.*
+
+---
+
 #### Dependences
 The only dep is ncurses 5.0 or higher.
 
@@ -32,8 +36,15 @@ $ ./bin/cursesart file
 * **Up, down, left, right arrows:** move the color/attribute selector on the right  toolbar.
 * **I, J, K, L:** move the sheet.
 * **c:** center the sheet.
+* **r:** Resize mode: Open resize mode dialog.
 * **v:** show / hide sheet background.
 * **F2:** save the file and generates C source.
+
+##### Resize Mode
+
+* **i, j, k, l:** set the new width and height.
+* **Enter:** accept changes.
+* **Esc:** discard changes.
 
 ---
 

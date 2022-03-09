@@ -6,6 +6,7 @@ CursesArt *curses_art_new(void) {
     art->filename = NULL;
     art->quit = 0;
     art->quit_prompt = 0;
+    art->resize_mode = 0;
     art->sheet.width = 40;
     art->sheet.height = 9;
     art->sheet.data = NULL;

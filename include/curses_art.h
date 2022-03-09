@@ -6,7 +6,7 @@
 typedef struct {
     char *filename;
     Sheet sheet;
-    int quit, quit_prompt;
+    int quit, quit_prompt, resize_mode, neww, newh;
 } CursesArt;
 
 CursesArt *curses_art_new(void);

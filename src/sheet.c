@@ -67,3 +67,28 @@ void sheet_center(Sheet *sheet) {
     sheet->x = w / 2 - sheet->width / 2;
     sheet->y = h / 2 - sheet->height / 2;
 }
+
+void sheet_resize(Sheet *sheet, int w, int h) {
+    Cell *tmp; int x, y;
+
+    /* Create a new array */
+    tmp = (Cell *) calloc(w * h, sizeof(Cell));
+
+    /* Copy data to new array */
+    for (y = 0; y < sheet->height; y ++) {
+        for (x = 0; x < sheet->width; x ++) {
+            if (x < w && y < h)
+                tmp[y * w + x] = sheet->data[y * sheet->width + x];
+        }
+    }
+
+    /* Free old array */
+    free(sheet->data);
+
+    /* Set the new array */
+    sheet->width = w;
+    sheet->height = h;
+    sheet->data = tmp;
+    
+    sheet->modified = 1;
+}

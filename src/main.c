@@ -10,6 +10,7 @@
 #include <file_utils.h>
 #include <code_gen.h>
 #include <quit_prompt.h>
+#include <resize_mode.h>
 #include <mouse.h>
 
 int main(int argc, char *argv[]) {
@@ -60,9 +61,8 @@ int main(int argc, char *argv[]) {
         titlebar_draw(art);
         statusbar_draw(art);
 
-        if (art->quit_prompt) {
-            draw_quit_prompt();
-        }
+        if (art->quit_prompt) draw_quit_prompt();
+        if (art->resize_mode) draw_resize_mode(art);
 
         refresh();
 
@@ -71,6 +71,11 @@ int main(int argc, char *argv[]) {
 
         if (art->quit_prompt) {
             update_quit_prompt(art);
+            continue;
+        }
+
+        if (art->resize_mode) {
+            update_resize_mode(art);
             continue;
         }
 
@@ -145,6 +150,14 @@ int main(int argc, char *argv[]) {
         case 'c':
         case 'C':
             sheet_center(&art->sheet);
+            break;
+
+        /* Resize Sheet */
+        case 'r':
+        case 'R':
+            art->resize_mode = 1;
+            art->neww = art->sheet.width;
+            art->newh = art->sheet.height;
             break;
 
         /* Show / hide sheet bg */

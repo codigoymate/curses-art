@@ -25,5 +25,6 @@ void sheet_print_ch(Sheet *sheet);
 void sheet_delete_ch(Sheet *sheet);
 
 void sheet_center(Sheet *sheet);
+void sheet_resize(Sheet *sheet, int w, int h);
 
 #endif
