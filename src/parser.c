@@ -85,7 +85,14 @@ int parse_arguments(CursesArt *art, int argc, char *argv[]) {
 }
 
 void help(void) {
-    printf("(Showing help)\n");
+    printf("Usage: cursesart [OPTION]... FILE\n");
+    printf("The FILE filename is obligatory.\n\n");
+
+    printf("Arguments:\n");
+    printf("  %-30s%s", "-w VALUE, --width VALUE", "Sets the width of the sheet.\n");
+    printf("  %-30s%s", "-h VALUE, --height VALUE", "Sets the height of the sheet.\n");
+    printf("  %-30s%s", "-H, --help", "Show this help.\n");
+
 }
 
 int parse_number(int *number, const char *str) {
