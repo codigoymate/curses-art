@@ -19,8 +19,7 @@ void draw_resize_mode(CursesArt *art) {
     mvprintw(h - 4, 5, "Previous size: (%i, %i); new size: (%i, %i).",
         art->sheet.width, art->sheet.height, art->neww, art->newh);
 
-    mvprintw(h - 3, 5, "I, J, K, L: Change size; ENTER: Accept; ESC: Cancel.",
-        art->sheet.width, art->sheet.height, art->neww, art->newh);
+    mvprintw(h - 3, 5, "I, J, K, L: Change size; ENTER: Accept; ESC: Cancel.");
 
     attroff(COLOR_PAIR(COLOR_RESIZE_MODE));
 }
