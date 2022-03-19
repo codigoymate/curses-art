@@ -9,6 +9,11 @@
 #define COLOR_QUIT_PROMPT   70
 #define COLOR_RESIZE_MODE   71
 
+/**
+ * @brief Init all ncurses color pairs.
+ * 1 to 64 are reserved to draw palette.
+ * 
+ */
 void init_pairs(void);
 
 #endif
