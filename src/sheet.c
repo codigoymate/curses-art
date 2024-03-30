@@ -92,3 +92,73 @@ void sheet_resize(Sheet *sheet, int w, int h) {
     
     sheet->modified = 1;
 }
+
+void sheet_shift_h(Sheet *sheet, int dir) {
+	Cell *tmp;
+	int x, y;
+
+	/* Create a new array */
+    tmp = (Cell *) calloc(sheet->width * sheet->height, sizeof(Cell));
+
+	if (dir == -1) {
+		for (x = 1; x < sheet->width; x ++) {
+			for (y = 0; y < sheet->height; y ++) {
+				tmp[y * sheet->width + x - 1] = sheet->data[y * sheet->width + x];
+			}
+		}
+		for (y = 0; y < sheet->height; y ++) {
+			tmp[y * sheet->width + sheet->width - 1] = sheet->data[y * sheet->width];
+		}
+	} else {
+		for (x = sheet->width - 2; x >= 0; x --) {
+			for (y = 0; y < sheet->height; y ++) {
+				tmp[y * sheet->width + x + 1] = sheet->data[y * sheet->width + x];
+			}
+		}
+		for (y = 0; y < sheet->height; y ++) {
+			tmp[y * sheet->width] = sheet->data[y * sheet->width + sheet->width - 1];
+		}
+	}
+
+	/* Free old array */
+    free(sheet->data);
+
+	/* Set the new array */
+	sheet->data = tmp;
+	sheet->modified = 1;
+}
+
+void sheet_shift_v(Sheet *sheet, int dir) {
+	Cell *tmp;
+	int x, y;
+
+	/* Create a new array */
+    tmp = (Cell *) calloc(sheet->width * sheet->height, sizeof(Cell));
+
+	if (dir == -1) {
+		for (y = 1; y < sheet->height; y ++) {
+			for (x = 0; x < sheet->width; x ++) {
+				tmp[(y - 1) * sheet->width + x] = sheet->data[y * sheet->width + x];
+			}
+		}
+		for (x = 0; x < sheet->width; x ++) {
+			tmp[(sheet->height - 1) * sheet->width + x] = sheet->data[x];
+		}
+	} else {
+		for (y = sheet->height - 2; y >= 0; y --) {
+			for (x = 0; x < sheet->width; x ++) {
+				tmp[(y + 1) * sheet->width + x] = sheet->data[y * sheet->width + x];
+			}
+		}
+		for (x = 0; x < sheet->width; x ++) {
+			tmp[x] = sheet->data[(sheet->height - 1) * sheet->width + x];
+		}
+	}
+
+	/* Free old array */
+    free(sheet->data);
+
+	/* Set the new array */
+	sheet->data = tmp;
+	sheet->modified = 1;
+}

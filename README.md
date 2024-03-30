@@ -34,7 +34,8 @@ $ ./bin/cursesart file
 * **Delete, x:** delete the current character at cursor position.
 * **w, a, s, d:** Move the character selector on the left toolbar.
 * **Up, down, left, right arrows:** move the color/attribute selector on the right  toolbar.
-* **I, J, K, L:** move the sheet.
+* **Ctrl + (i, j, k, l):** move the sheet.
+* **I, J, K, L:** Move the drawing relative to the sheet.
 * **c:** center the sheet.
 * **r:** Resize mode: Open resize mode dialog.
 * **v:** show / hide sheet background.

@@ -103,6 +103,11 @@ int main(int argc, char *argv[]) {
         case 'j' & 0x1F: art->sheet.x --; break;
         case 'l' & 0x1F: art->sheet.x ++; break;
 
+		case 'J': sheet_shift_h(&art->sheet, -1); break;
+		case 'L': sheet_shift_h(&art->sheet, 1); break;
+		case 'I': sheet_shift_v(&art->sheet, -1); break;
+		case 'K': sheet_shift_v(&art->sheet, 1); break;
+
         case 'i':
             art->sheet.cursor -= art->sheet.width;
             if (art->sheet.cursor < 0) art->sheet.cursor += art->sheet.width;

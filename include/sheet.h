@@ -27,4 +27,7 @@ void sheet_delete_ch(Sheet *sheet);
 void sheet_center(Sheet *sheet);
 void sheet_resize(Sheet *sheet, int w, int h);
 
+void sheet_shift_h(Sheet *sheet, int dir);
+void sheet_shift_v(Sheet *sheet, int dir);
+
 #endif
